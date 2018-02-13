@@ -8,7 +8,7 @@
 #include "my.h"
 
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	int fd;
 	int i = 1;

@@ -72,7 +72,6 @@ int	navy(int fd, char **av, int ac)
 		player_one(fd);
 	else
 		player_two(fd, av[1]);
-	//print_map(map);
 	return (0);
 
 }

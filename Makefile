@@ -5,14 +5,14 @@
 ## a
 ##
 
-SRC	=	get_next_line.c		\
-		error.c			\
-		navy.c			\
-		my_putchar.c		\
-		my_getnbr.c		\
-		my_put_nbr.c		\
-		players.c		\
-		main.c					
+SRC	=	src/get_next_line.c		\
+		src/error.c			\
+		src/navy.c			\
+		src/my_putchar.c		\
+		src/my_getnbr.c			\
+		src/my_put_nbr.c		\
+		src/players.c			\
+		src/main.c
 
 OBJ	=	$(SRC:.c=.o)
 
@@ -20,7 +20,7 @@ NAME	=	./navy
 
 all:	$(NAME)
 
-CFLAGS	=	-g3
+CFLAGS	=	-g3 -I ./include
 
 $(NAME):	 $(OBJ)
 	gcc -o $(NAME) $(OBJ)
