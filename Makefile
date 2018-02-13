@@ -9,6 +9,7 @@ SRC	=	get_next_line.c		\
 		error.c			\
 		navy.c			\
 		my_putchar.c		\
+		my_getnbr.c		\
 		main.c					
 
 OBJ	=	$(SRC:.c=.o)
@@ -19,7 +20,7 @@ all:	$(NAME)
 
 CFLAGS	=	-g3
 
-$(NAME):	$(OBJ)
+$(NAME):	 $(OBJ)
 	gcc -o $(NAME) $(OBJ)
 
 clean:

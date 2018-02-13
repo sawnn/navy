@@ -13,10 +13,10 @@
 #include <unistd.h>
 #include <fcntl.h>
 
+int my_getnbr(char *str);
 void my_putchar(char c);
 int navy(int fd);
 char **check_file(int fd);
 char **my_str_to_word_array(char *str);
-int my_getnbr(char const *str);
 char *get_next_line(int fd);
 #endif
