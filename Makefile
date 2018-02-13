@@ -5,13 +5,15 @@
 ## a
 ##
 
-SRC	=	src/get_next_line.c		\
-		src/error.c			\
+SRC	=	src/error.c			\
 		src/navy.c			\
 		src/my_putchar.c		\
 		src/my_getnbr.c			\
 		src/my_put_nbr.c		\
 		src/players.c			\
+		src/get_next_line.c		\
+		src/attack_and_wait.c		\
+		src/wait_attack.c		\
 		src/main.c
 
 OBJ	=	$(SRC:.c=.o)

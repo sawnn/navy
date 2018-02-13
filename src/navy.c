@@ -39,7 +39,7 @@ char	**get_map(char **position)
 		j = -1;
 	}
 	map[i] = NULL;
-	while (position[++y]) {
+	while (position && position[++y]) {
 		while (position[y][++x])
 			if (put_position(x, y, position, map) == 84)
 				return (NULL);
@@ -66,12 +66,20 @@ void	print_map(char **map)
 	}
 }
 
+void	print_game(char **map, char **map_enemy)
+{
+	write(1, "\nmy positions:\n", 15);
+	print_map(map);
+	write(1, "\nenemy's positions:\n", 21);
+	print_map(map_enemy);
+}
+
 int	navy(int fd, char **av, int ac)
 {
 	if (ac == 2)
-		player_one(fd);
+		return (player_one(fd));
 	else
-		player_two(fd, av[1]);
+		return (player_two(fd, av[1]));
 	return (0);
 
 }

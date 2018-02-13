@@ -1,21 +1,24 @@
-#include <signal.h>
-#include <stdio.h>
-#include <unistd.h>
+/*
+** EPITECH PROJECT, 2018
+** wait_attack.c
+** File description:
+** a
+*/
 
-int i = -1;
+#include "my.h"
 
-void	bin_to_dec(char *bin)
+int	bin_to_dec(char *bin)
 {
 	int total = 0;
 	int nb = 128;
-	int i = 0;
+	int o = 0;
 
-	while (i < 8) {
-		total = total + (nb * (bin[i] - 48));
-		i++;
+	while (o < 8) {
+		total = total + (nb * (bin[o] - 48));
+		o++;
 		nb /= 2;
 	}
-	printf("%d\n", total);
+	return (total);
 }
 
 void	zero(int sig)
@@ -28,16 +31,16 @@ void	zero(int sig)
 	}
 }
 
-int main(int ac, char **av)
+int	get_signal(void)
 {
-	int pid = getpid();
 	char *bin = malloc(sizeof(char) * 9);
 	int j = 0;
-	
-	printf("%d\n", pid);
+
+	signal(SIGUSR2, zero);
+	i = -1;
 	while (j < 8) {
-		signal(SIGUSR2, zero);
 		signal(SIGUSR1, zero);
+		signal(SIGUSR2, zero);
 		if (i == 1) {
 			bin[j++] = '1';
 		}
@@ -46,6 +49,5 @@ int main(int ac, char **av)
 		i = -1;
 	}
 	bin[j] = '\0';
-	printf("%s\n", bin);
-	bin_to_dec(bin);
+	return (bin_to_dec(bin));
 }

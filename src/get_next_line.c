@@ -38,7 +38,7 @@ int	my_strlen(char *str)
 	return (i);
 }
 
-char	*my_strncat(char *dest, char *src, int nb)
+char    *my_strncat(char *dest, char *src, int nb)
 {
 	int i = 0;
 	int t1 = -1;
