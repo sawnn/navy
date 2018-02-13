@@ -11,13 +11,16 @@
 int main(int ac, char **av)
 {
 	int fd;
-	
+	int i = 1;
+
+	if (ac == 3)
+		i = 2;
 	if (ac == 1)
 		return (84);
-	fd = open(av[1], O_RDONLY);
+	fd = open(av[i], O_RDONLY);
 	if (fd == -1)
 		return (84);
-	else if (navy(fd) == 84)
+	else if (navy(fd, av, ac) == 84)
 		return (84);
 	return (0);
 }

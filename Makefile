@@ -10,6 +10,8 @@ SRC	=	get_next_line.c		\
 		navy.c			\
 		my_putchar.c		\
 		my_getnbr.c		\
+		my_put_nbr.c		\
+		players.c		\
 		main.c					
 
 OBJ	=	$(SRC:.c=.o)

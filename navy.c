@@ -66,16 +66,13 @@ void	print_map(char **map)
 	}
 }
 
-int	navy(int fd)
+int	navy(int fd, char **av, int ac)
 {
-	char **file;
-	char **map;
-
-	if ((file = check_file(fd)) == NULL)
-		return (84);
-	if ((map = get_map(file)) == NULL)
-		return (84);
-	print_map(map);
+	if (ac == 2)
+		player_one(fd);
+	else
+		player_two(fd, av[1]);
+	//print_map(map);
 	return (0);
 
 }
