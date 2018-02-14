@@ -87,8 +87,7 @@ int	wait_attack(pid_t pid, char **map, char **map_enemy)
 		my_putchar(i + 'A');
 		my_putchar(j + '1');
 		write(1, ": hit\n", 6);
-		if (map[j][i] != 'o')
-			map[j][i] = 'x';
+		map[j][i] = map[j][i] != 'o' ? 'x' : map[j][i];
 		usleep(10000);
 		kill(pid, SIGUSR2);
 	}
