@@ -18,6 +18,7 @@
 
 extern int i;
 
+int     is_play(char **map, char **map_enemy, int x, int y);
 void	print_game(char **map, char **map_enemy);
 int	attack(pid_t pid, char **map, char **map_enemy);
 int	get_signal(void);

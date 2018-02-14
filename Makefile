@@ -14,6 +14,7 @@ SRC	=	src/error.c			\
 		src/get_next_line.c		\
 		src/attack_and_wait.c		\
 		src/wait_attack.c		\
+		src/is_won.c			\
 		src/main.c
 
 OBJ	=	$(SRC:.c=.o)
