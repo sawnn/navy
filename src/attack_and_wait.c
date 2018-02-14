@@ -74,11 +74,12 @@ int	wait_attack(pid_t pid, char **map, char **map_enemy)
 	int i = get_signal();
 	int j = get_signal();
 
-	if (map[j][i] == '.') {
+	if (map[j][i] == '.' || map[j][i] == 'x' || map[j][i] == 'o') {
 		my_putchar(i + 'A');
 		my_putchar(j + '1');
 		write(1, ": missed\n", 9);
-		map[j][i] = 'o';
+		if (map[j][i] != 'x')
+			map[j][i] = 'o';
 		usleep(10000);
 		kill(pid, SIGUSR1);
 	}
@@ -86,7 +87,8 @@ int	wait_attack(pid_t pid, char **map, char **map_enemy)
 		my_putchar(i + 'A');
 		my_putchar(j + '1');
 		write(1, ": hit\n", 6);
-		map[j][i] = 'x';
+		if (map[j][i] != 'o')
+			map[j][i] = 'x';
 		usleep(10000);
 		kill(pid, SIGUSR2);
 	}
