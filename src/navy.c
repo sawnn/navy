@@ -77,9 +77,9 @@ void	print_game(char **map, char **map_enemy)
 int	navy(int fd, char **av, int ac)
 {
 	if (ac == 2)
-		return (player_one(fd));
+		return (player_one(fd, 2, 0));
 	else
-		return (player_two(fd, av[1]));
+		return (player_two(fd, av[1], 2));
 	return (0);
 
 }

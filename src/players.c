@@ -34,13 +34,11 @@ pid_t	get_pid()
 	return (pid);
 }
 
-int	player_one(int fd)
+int	player_one(int fd, int is_won, pid_t pid)
 {
 	char **file;
 	char **map;
 	char **map_enemy;
-	pid_t pid;
-	int is_won = 2;
 
 	if ((file = check_file(fd)) == NULL)
 		return (84);
@@ -52,8 +50,9 @@ int	player_one(int fd)
 	while (is_won == 2) {
 		print_game(map, map_enemy);
 		attack(pid, map, map_enemy);
-		write(1, "\nwaiting for enemy's attack...\n", 31);
-		wait_attack(pid, map, map_enemy);
+		is_won = is_play(map, map_enemy, -1, -1);
+		is_won == 2 ? write(1, "\nwaiting for enemy's attack...\n", 31) : 0;
+		is_won == 2 ? wait_attack(pid, map, map_enemy) : 0;
 		is_won = is_play(map, map_enemy, -1, -1);
 	}
 	return (is_won);
@@ -68,12 +67,11 @@ void	connect_player(char *pid)
 	write(1, "\nsuccessfully connected\n\n", 25);
 }
 
-int	player_two(int fd, char *pid)
+int	player_two(int fd, char *pid, int is_won)
 {
 	char **file;
 	char **map;
 	char **map_enemy;
-	int is_won = 2;
 
 	if ((file = check_file(fd)) == NULL)
 		return (84);
@@ -86,7 +84,8 @@ int	player_two(int fd, char *pid)
 		print_game(map, map_enemy);
 		write(1, "waiting for enemy's attack...\n", 30);
 		wait_attack(my_getnbr(pid), map, map_enemy);
-		attack(my_getnbr(pid), map, map_enemy);
+		is_won = is_play(map, map_enemy, -1, -1);
+		is_won == 2 ? attack(my_getnbr(pid), map, map_enemy) : 0;
 		is_won = is_play(map, map_enemy, -1, -1);
 	}
 	return (is_won);
