@@ -16,7 +16,7 @@ void	handler(int signum, siginfo_t *sig, void *context)
 	i = sig->si_pid;
 }
 
-pid_t	get_pid()
+pid_t	get_pid(void)
 {
 	struct sigaction sa;
 	pid_t pid;
@@ -34,14 +34,11 @@ pid_t	get_pid()
 	return (pid);
 }
 
-int	player_one(int fd, int is_won, pid_t pid)
+int	player_one(char **file, int is_won, pid_t pid)
 {
-	char **file;
 	char **map;
 	char **map_enemy;
 
-	if ((file = check_file(fd)) == NULL)
-		return (84);
 	if ((map = get_map(file)) == NULL)
 		return (84);
 	if ((map_enemy = get_map(NULL)) == NULL)
@@ -49,7 +46,8 @@ int	player_one(int fd, int is_won, pid_t pid)
 	pid = get_pid();
 	while (is_won == 2) {
 		print_game(map, map_enemy);
-		attack(pid, map, map_enemy);
+		if ((attack(pid, map, map_enemy)) == 84)
+			return (84);
 		is_won = is_play(map, map_enemy, -1, -1);
 		is_won == 2 ? write(1, "\nwaiting for enemy's attack...\n", 31) : 0;
 		is_won == 2 ? wait_attack(pid, map, map_enemy) : 0;
@@ -67,14 +65,12 @@ void	connect_player(char *pid)
 	write(1, "\nsuccessfully connected\n\n", 25);
 }
 
-int	player_two(int fd, char *pid, int is_won)
+int	player_two(char **file, char *pid, int is_won)
 {
-	char **file;
 	char **map;
 	char **map_enemy;
+	int check = 0;
 
-	if ((file = check_file(fd)) == NULL)
-		return (84);
 	if ((map = get_map(file)) == NULL)
 		return (84);
 	if ((map_enemy = get_map(NULL)) == NULL)
@@ -85,7 +81,9 @@ int	player_two(int fd, char *pid, int is_won)
 		write(1, "waiting for enemy's attack...\n", 30);
 		wait_attack(my_getnbr(pid), map, map_enemy);
 		is_won = is_play(map, map_enemy, -1, -1);
-		is_won == 2 ? attack(my_getnbr(pid), map, map_enemy) : 0;
+		check = is_won == 2 ? attack(my_getnbr(pid), map, map_enemy) : check;
+		if (check == 84)
+			return (84);
 		is_won = is_play(map, map_enemy, -1, -1);
 	}
 	return (is_won);

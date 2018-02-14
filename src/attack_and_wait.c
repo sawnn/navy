@@ -51,6 +51,8 @@ int	attack(pid_t pid, char **map, char **map_enemy)
 
 	write(1, "\nattack: ", 9);
 	while (error_position((str = get_next_line(0)))) {
+		if (str == NULL)
+			return (84);
 		write(1, "wrong position\n", 15);
 		write(1, "\nattack: ", 9);
 	}
@@ -62,14 +64,12 @@ int	attack(pid_t pid, char **map, char **map_enemy)
 		signal(SIGUSR1, atk);
 		signal(SIGUSR2, atk);
 	}
-	if (i == 0)
-		map_enemy[str[1] - '1'][str[0] - 'A'] = 'o';
-	else
-		map_enemy[str[1] - '1'][str[0] - 'A'] = 'x';
+	map_enemy[str[1] - '1'][str[0] - 'A'] = (i == 0 && map_enemy[str[1] - '1'][str[0] - 'A'] != 'x') ? 'o' : 'x';
 	i = -1;
+	return (0);
 }
 
-int	wait_attack(pid_t pid, char **map, char **map_enemy)
+void	wait_attack(pid_t pid, char **map, char **map_enemy)
 {
 	int i = get_signal();
 	int j = get_signal();
@@ -87,7 +87,7 @@ int	wait_attack(pid_t pid, char **map, char **map_enemy)
 		my_putchar(i + 'A');
 		my_putchar(j + '1');
 		write(1, ": hit\n", 6);
-		map[j][i] = map[j][i] != 'o' ? 'x' : map[j][i];
+		map[j][i] = 'x';
 		usleep(10000);
 		kill(pid, SIGUSR2);
 	}

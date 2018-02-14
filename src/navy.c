@@ -76,10 +76,18 @@ void	print_game(char **map, char **map_enemy)
 
 int	navy(int fd, char **av, int ac)
 {
-	if (ac == 2)
-		return (player_one(fd, 2, 0));
-	else
-		return (player_two(fd, av[1], 2));
+	char **file;
+
+	if (ac == 2) {
+		if ((file = check_file(fd)) == NULL)
+			return (84);
+		return (player_one(file, 2, 0));
+	}
+	else {
+		if ((file = check_file(fd)) == NULL)
+			return (84);
+		return (player_two(file, av[1], 2));
+	}
 	return (0);
 
 }
