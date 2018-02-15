@@ -23,7 +23,7 @@ NAME	=	./navy
 
 all:	$(NAME)
 
-CFLAGS	=	-g3 -I ./include
+CFLAGS	=	-I ./include
 
 $(NAME):	 $(OBJ)
 	gcc -o $(NAME) $(OBJ)
