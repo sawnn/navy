@@ -89,5 +89,4 @@ int	navy(int fd, char **av, int ac)
 		return (player_two(file, av[1], 2));
 	}
 	return (0);
-
 }
