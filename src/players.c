@@ -78,7 +78,7 @@ int	player_two(char **file, char *pid, int is_won)
 	connect_player(pid);
 	while (is_won == 2) {
 		print_game(map, map_enemy);
-		write(1, "waiting for enemy's attack...\n", 30);
+		write(1, "\nwaiting for enemy's attack...\n", 31);
 		wait_attack(my_getnbr(pid), map, map_enemy);
 		is_won = is_play(map, map_enemy, -1, -1);
 		check = is_won == 2 ? attack(my_getnbr(pid), map, map_enemy) : check;
