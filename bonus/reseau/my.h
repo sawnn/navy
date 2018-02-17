@@ -21,7 +21,7 @@
 typedef struct sockaddr_in sockaddr_in;
 typedef struct sockaddr sockaddr;
 
-int	navy(int *csock);
+int	navy(int *csock, int player1, int player2, int check);
 
 
 #endif /* MY_H_ */

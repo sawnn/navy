@@ -22,7 +22,7 @@ int	player_one(char **file, int is_won, int sock)
 			return (84);
 		is_won = is_play(map, map_enemy, -1, -1);
 		is_won == 2 ? write(1, "\nwaiting for enemy's attack...\n", 31) : 0;
-		is_won == 2 ? wait_attack(sock, map, map_enemy) : 0;
+		is_won == 2 ? wait_attack(sock, map, map_enemy, 1) : 0;
 		is_won = is_won == 2 ? is_play(map, map_enemy, -1, -1) : is_won;
 	}
 	return (is_won);
@@ -41,7 +41,7 @@ int	player_two(char **file, int is_won, int sock)
 	while (is_won == 2) {
 		print_game(map, map_enemy);
 		write(1, "\nwaiting for enemy's attack...\n", 31);
-		wait_attack(sock, map, map_enemy);
+		wait_attack(sock, map, map_enemy, 1);
 		is_won = is_play(map, map_enemy, -1, -1);
 		check = is_won == 2 ? attack(sock, map, map_enemy) : check;
 		if (check == 84)

@@ -24,7 +24,7 @@ typedef struct sockaddr sockaddr;
 int     is_play(char **map, char **map_enemy, int x, int y);
 void	print_game(char **map, char **map_enemy);
 int	attack(int sock, char **map, char **map_enemy);
-void	wait_attack(int sock, char **map, char **map_enemy);
+void	wait_attack(int sock, char **map, char **map_enemy, int one);
 int	my_strlen(char *str);
 char	*get_next_line(int fd);
 void	print_map(char **map);

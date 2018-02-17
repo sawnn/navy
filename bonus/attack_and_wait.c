@@ -52,11 +52,10 @@ int	attack(int sock, char **map, char **map_enemy)
 	return (atk(x, map_enemy, str));
 }
 
-void	wait_attack(int sock, char **map, char **map_enemy)
+void	wait_attack(int sock, char **map, char **map_enemy, int one)
 {
 	int i;
 	int j;
-	int one = 1;
 	int zero = 0;
 
 	recv(sock, &j, sizeof(j), 0);
@@ -65,8 +64,7 @@ void	wait_attack(int sock, char **map, char **map_enemy)
 		my_putchar(i + 'A');
 		my_putchar(j + '1');
 		write(1, ": missed\n", 9);
-		if (map[j][i] != 'x')
-			map[j][i] = 'o';
+		map[j][i] = map[j][i] != 'x' ? 'o' : 'x';
 		send(sock, &zero, 4, 0);
 	}
 	else {
@@ -74,6 +72,6 @@ void	wait_attack(int sock, char **map, char **map_enemy)
 		my_putchar(j + '1');
 		write(1, ": hit\n", 6);
 		map[j][i] = 'x';
-		send(sock, &one, 4, 0); 
+		send(sock, &one, 4, 0);
 	}
 }

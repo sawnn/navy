@@ -7,13 +7,10 @@
 
 #include "my.h"
 
-int	navy(int *csock)
+int	navy(int *csock, int player1, int player2, int check)
 {
-	int player1 = 1;
-	int player2 = 2;
 	int letter;
 	int nbr;
-	int check;
 
 	send(csock[0], &player1, sizeof(player1), 0);
 	send(csock[1], &player2, sizeof(player2), 0);

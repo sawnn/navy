@@ -57,7 +57,7 @@ int	main(int ac, char **av)
 		return (84);
 	if ((reseau(&csock)) == 84)
 		return (84);
-	if (navy(csock) == 84)
+	if (navy(csock, 1, 2, 0) == 84)
 		return (84);
 	return (0);
 }
