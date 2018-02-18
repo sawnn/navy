@@ -28,7 +28,7 @@ char	*get_next_line(int fd);
 void	print_map(char **map);
 void	my_put_nbr(int nb);
 void	my_putchar(char c);
-int	player_two(char **file, char *pid, int is_won);
+int	player_two(char **file, char *pid, int is_won, int check);
 int	player_one(char **file, int is_won, pid_t pid);
 int	my_getnbr(char *str);
 int	navy(int fd, char **av, int ac);

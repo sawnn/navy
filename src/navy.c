@@ -86,7 +86,7 @@ int	navy(int fd, char **av, int ac)
 	else {
 		if ((file = check_file(fd)) == NULL)
 			return (84);
-		return (player_two(file, av[1], 2));
+		return (player_two(file, av[1], 2, 0));
 	}
 	return (0);
 }

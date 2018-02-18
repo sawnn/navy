@@ -56,26 +56,27 @@ int	player_one(char **file, int is_won, pid_t pid)
 	return (is_won);
 }
 
-void	connect_player(char *pid)
+int	connect_player(char *pid)
 {
 	usleep(10000);
-	kill(my_getnbr(pid), SIGUSR1);
+	if (kill(my_getnbr(pid), SIGUSR1) == -1)
+		return (84);
 	write(1, "my_pid: ", 8);
 	my_put_nbr(getpid());
 	write(1, "\nsuccessfully connected\n\n", 25);
 }
 
-int	player_two(char **file, char *pid, int is_won)
+int	player_two(char **file, char *pid, int is_won, int check)
 {
 	char **map;
 	char **map_enemy;
-	int check = 0;
 
 	if ((map = get_map(file)) == NULL)
 		return (84);
 	if ((map_enemy = get_map(NULL)) == NULL)
 		return (84);
-	connect_player(pid);
+	if (connect_player(pid) == 84)
+		return (84);
 	while (is_won == 2) {
 		print_game(map, map_enemy);
 		write(1, "\nwaiting for enemy's attack...\n", 31);
