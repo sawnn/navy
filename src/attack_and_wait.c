@@ -53,7 +53,7 @@ int	attack(pid_t pid, char **map, char **map_enemy)
 	while (error_position((str = get_next_line(0)))) {
 		if (str == NULL)
 			return (84);
-		write(1, "wrong position\n", 15);
+		write(1, "wrong position", 14);
 		write(1, "\nattack: ", 9);
 	}
 	dec_to_bin(str[0] - 'A', pid);

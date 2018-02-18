@@ -30,7 +30,7 @@ pid_t	get_pid(void)
 		sigaction(SIGUSR1, &sa, NULL);
 	pid = i;
 	i = -1;
-	write(1, "\nenemy connected\n\n", 18);
+	write(1, "\nenemy connected\n", 17);
 	return (pid);
 }
 
@@ -63,7 +63,7 @@ int	connect_player(char *pid)
 		return (84);
 	write(1, "my_pid: ", 8);
 	my_put_nbr(getpid());
-	write(1, "\nsuccessfully connected\n\n", 25);
+	write(1, "\nsuccessfully connected\n", 24);
 }
 
 int	player_two(char **file, char *pid, int is_won, int check)
