@@ -18,6 +18,7 @@ int	put_position(int x, int y, char **position, char **map)
 		i = position[y][x] - 49;
 		if (map[i][j] != '.')
 			return (84);
+		y = my_strlen(position[y]) / 2 - 2;
 		map[i][j] = y + 50;
 	}
 	return (0);
