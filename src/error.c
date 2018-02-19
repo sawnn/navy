@@ -75,7 +75,7 @@ char	**check_length(char **file)
 	char **position;
 
 	while (file[++i])
-		if (file[i][0] != ((++j) + 48))
+		if (file[i][0] < '2' || file[i][0] > '5')
 			return (NULL);
 	i = -1;
 	while (file[++i])
@@ -88,17 +88,16 @@ char	**check_length(char **file)
 
 char	**check_file(int fd)
 {
-	int i = -1;
+	int i = 0;
 	int j = -1;
 	char **file = malloc(sizeof(char *) * (4 + sizeof(char*)));
 	char **position;
 
 	if (file == NULL)
 		return (NULL);
-	while ((file[++i] = get_next_line(fd)));
-	if (i != 4)
-		return (NULL);
-	else if ((position = check_length(file)) == NULL)
+	while ((file[i] = get_next_line(fd)))
+		i = file[i][0] != '\0' ? i + 1 : i;
+	if ((position = check_length(file)) == NULL)
 		return (NULL);
 	return (position);
 }
