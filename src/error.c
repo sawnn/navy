@@ -97,6 +97,8 @@ char	**check_file(int fd)
 		return (NULL);
 	while ((file[i] = get_next_line(fd)))
 		i = file[i][0] != '\0' ? i + 1 : i;
+	if (i != 4)
+		return (NULL);
 	if ((position = check_length(file)) == NULL)
 		return (NULL);
 	return (position);
