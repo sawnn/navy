@@ -72,11 +72,16 @@ char	**check_length(char **file)
 {
 	int i = -1;
 	int j = 1;
+	int tmp[4] = {0, 0, 0, 0};
 	char **position;
 
-	while (file[++i])
+	while (file[++i]) {
 		if (file[i][0] < '2' || file[i][0] > '5')
 			return (NULL);
+		if (tmp[file[i][0] - 50] == 1)
+			return (NULL);
+		tmp[file[i][0] - 50] = 1;
+	}
 	i = -1;
 	while (file[++i])
 		if (file[i][1] != ':' || file[i][4] != ':')
