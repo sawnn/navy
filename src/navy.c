@@ -42,8 +42,7 @@ char	**get_map(char **position)
 	map[i] = NULL;
 	while (position && position[++y]) {
 		while (position[y][++x])
-			if (put_position(x, y, position, map) == 84)
-				return (NULL);
+			HELP
 		x = -1;
 	}
 	return (map);

@@ -84,7 +84,7 @@ char	*get_next_line(int fd)
 	while (fd >= 0) {
 		if (i == -1) {
 			buff[(ret = read(fd, buff, READ_SIZE))] = '\0';
-			r = (buff[0] == '\0' && r != NULL && r[0] == '\0') ? NULL : r;
+			HELP6
 		}
 		if ((ret == 0 && i == -1 && r == NULL) || ret == -1)
 			return (NULL);

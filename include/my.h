@@ -7,7 +7,12 @@
 
 #ifndef MY_H_
 #define MY_H_
-
+#define HELP if (put_position(x, y, position, map) == 84) return (NULL);
+#define HELP2 (i == 0 && map_enemy[str[1] - '1'][str[0] - 'A'] != 'x') ? 'o' : 'x';
+#define HELP3 map_enemy[y][x] == 'x' ? x_enemy + 1 : x_enemy;
+#define HELP4 write(1, "\nwaiting for enemy's attack...\n", 31) : 0;
+#define HELP5 attack(my_getnbr(pid), map, map_enemy) : check;
+#define HELP6 r = (buff[0] == '\0' && r != NULL && r[0] == '\0') ? NULL : r;
 #define READ_SIZE (100)
 
 #include <signal.h>
@@ -18,7 +23,7 @@
 
 extern int i;
 
-int     is_play(char **map, char **map_enemy, int x, int y);
+int	is_play(char **map, char **map_enemy, int x, int y);
 void	print_game(char **map, char **map_enemy);
 int	attack(pid_t pid, char **map, char **map_enemy);
 int	get_signal(void);

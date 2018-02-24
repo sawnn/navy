@@ -64,7 +64,7 @@ int	attack(pid_t pid, char **map, char **map_enemy)
 		signal(SIGUSR1, atk);
 		signal(SIGUSR2, atk);
 	}
-	map_enemy[str[1] - '1'][str[0] - 'A'] = (i == 0 && map_enemy[str[1] - '1'][str[0] - 'A'] != 'x') ? 'o' : 'x';
+	map_enemy[str[1] - '1'][str[0] - 'A'] = HELP2
 	i = -1;
 	return (0);
 }

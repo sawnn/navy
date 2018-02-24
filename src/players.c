@@ -49,7 +49,7 @@ int	player_one(char **file, int is_won, pid_t pid)
 		if ((attack(pid, map, map_enemy)) == 84)
 			return (84);
 		is_won = is_play(map, map_enemy, -1, -1);
-		is_won == 2 ? write(1, "\nwaiting for enemy's attack...\n", 31) : 0;
+		is_won == 2 ? HELP4
 		is_won == 2 ? wait_attack(pid, map, map_enemy) : 0;
 		is_won = is_won == 2 ? is_play(map, map_enemy, -1, -1) : is_won;
 	}
@@ -82,7 +82,7 @@ int	player_two(char **file, char *pid, int is_won, int check)
 		write(1, "\nwaiting for enemy's attack...\n", 31);
 		wait_attack(my_getnbr(pid), map, map_enemy);
 		is_won = is_play(map, map_enemy, -1, -1);
-		check = is_won == 2 ? attack(my_getnbr(pid), map, map_enemy) : check;
+		check = is_won == 2 ? HELP5
 		if (check == 84)
 			return (84);
 		is_won = is_won == 2 ? is_play(map, map_enemy, -1, -1) : is_won;

@@ -36,7 +36,7 @@ int	is_play(char **map, char **map_enemy, int x, int y)
 	x = -1;
 	while (map_enemy[++y]) {
 		while (map_enemy[y][++x])
-			x_enemy = map_enemy[y][x] == 'x' ? x_enemy + 1 : x_enemy;
+			x_enemy = HELP3
 		x = -1;
 	}
 	return (who_won(my_x, x_enemy, map, map_enemy));

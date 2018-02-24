@@ -43,4 +43,3 @@ char	*c_p(char length, char fix, char notfix, char final)
 		return (NULL);
 	return (position);
 }
-
