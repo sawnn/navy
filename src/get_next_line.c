@@ -70,7 +70,7 @@ char	*add_line(char *buff, int i, char *rest)
 		my_strncat(tmp, rest, my_strlen(rest));
 		my_strncat(tmp, buff, i);
 	}
-	free (rest);
+	free(rest);
 	return (tmp);
 }
 
