@@ -58,7 +58,7 @@ int	player_one(char **file, int is_won, pid_t pid)
 
 int	connect_player(char *pid)
 {
-	usleep(10000);
+	usleep(2000);
 	if (kill(my_getnbr(pid), SIGUSR1) == -1)
 		return (84);
 	write(1, "my_pid: ", 8);

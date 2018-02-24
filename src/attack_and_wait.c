@@ -24,7 +24,7 @@ void	dec_to_bin(int nb, pid_t pid)
 	while (++o < 8) {
 		nb <<= o;
 		nb >>= 7;
-		usleep(10000);
+		usleep(2000);
 		if (nb & 1 == 1)
 			kill(pid, SIGUSR1);
 		else
@@ -80,7 +80,7 @@ void	wait_attack(pid_t pid, char **map, char **map_enemy)
 		write(1, ": missed\n", 9);
 		if (map[j][i] != 'x')
 			map[j][i] = 'o';
-		usleep(10000);
+		usleep(2000);
 		kill(pid, SIGUSR1);
 	}
 	else {
@@ -88,7 +88,7 @@ void	wait_attack(pid_t pid, char **map, char **map_enemy)
 		my_putchar(j + '1');
 		write(1, ": hit\n", 6);
 		map[j][i] = 'x';
-		usleep(10000);
+		usleep(2000);
 		kill(pid, SIGUSR2);
 	}
 }
