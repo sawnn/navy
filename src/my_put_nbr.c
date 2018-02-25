@@ -18,6 +18,7 @@ int	nb_digit(int nb)
 	}
 	return (increment / 100);
 }
+
 void	my_put_nbr(int nb)
 {
 	int putch = 0;
