@@ -7,13 +7,11 @@
 
 #include "my.h"
 
-int i = 0;
-
 void	handler(int signum, siginfo_t *sig, void *context)
 {
 	signum = 0;
 	context = NULL;
-	i = sig->si_pid;
+	glob(sig->si_pid);
 }
 
 pid_t	get_pid(void)
@@ -26,10 +24,11 @@ pid_t	get_pid(void)
 	write(1, "my_pid: ", 8);
 	my_put_nbr(getpid());
 	write(1, "\nwaiting for enemy connection...\n", 33);
-	while (i == 0)
+	glob(0);
+	while (glob(-2) == 0)
 		sigaction(SIGUSR1, &sa, NULL);
-	pid = i;
-	i = -1;
+	pid = glob(-2);
+	glob(-1);
 	write(1, "\nenemy connected\n", 17);
 	return (pid);
 }

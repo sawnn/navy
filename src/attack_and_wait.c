@@ -36,12 +36,12 @@ void	dec_to_bin(int nb, pid_t pid)
 void	atk(int sig)
 {
 	if (sig == SIGUSR1) {
-		i = 0;
+		glob(0);
 		write(1, ": missed\n", 9);
 	}
 	else if (sig == SIGUSR2) {
 		write(1, ": hit\n", 6);
-		i = 1;
+		glob(1);
 	}
 }
 
@@ -59,13 +59,13 @@ int	attack(pid_t pid, char **map, char **map_enemy)
 	dec_to_bin(str[0] - 'A', pid);
 	dec_to_bin(str[1] - '1', pid);
 	write(1, str, 2);
-	i = -1;
-	while (i == -1) {
+	glob(-1);
+	while (glob(-2) == -1) {
 		signal(SIGUSR1, atk);
 		signal(SIGUSR2, atk);
 	}
 	map_enemy[str[1] - '1'][str[0] - 'A'] = HELP2
-	i = -1;
+	glob(-1);
 	return (0);
 }
 

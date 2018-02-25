@@ -24,10 +24,10 @@ int	bin_to_dec(char *bin)
 void	zero(int sig)
 {
 	if (sig == SIGUSR1) {
-		i = 1;
+		glob(1);
 	}
 	else if (sig == SIGUSR2) {
-		i = 0;
+		glob(0);
 	}
 }
 
@@ -37,16 +37,16 @@ int	get_signal(void)
 	int j = 0;
 
 	signal(SIGUSR2, zero);
-	i = -1;
+	glob(-1);
 	while (j < 8) {
 		signal(SIGUSR1, zero);
 		signal(SIGUSR2, zero);
-		if (i == 1) {
+		if (glob(-2) == 1) {
 			bin[j++] = '1';
 		}
-		if (i == 0)
+		if (glob(-2) == 0)
 			bin[j++] = '0';
-		i = -1;
+		glob(-1);
 	}
 	bin[j] = '\0';
 	return (bin_to_dec(bin));

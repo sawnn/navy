@@ -7,6 +7,15 @@
 
 #include "my.h"
 
+int	glob(int i)
+{
+	static int glob = 0;
+
+	if (i != -2)
+		glob = i;
+	return (glob);
+}
+
 int	main(int ac, char **av)
 {
 	int fd;
