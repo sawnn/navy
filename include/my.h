@@ -8,7 +8,8 @@
 #ifndef MY_H_
 #define MY_H_
 #define HELP if (put_position(x, y, position, map) == 84) return (NULL);
-#define HELP2 (i == 0 && map_enemy[str[1] - '1'][str[0] - 'A'] != 'x') ? 'o' : 'x';
+#define HELP2 HELP22 ? 'o' : 'x';
+#define HELP22 (i == 0 && map_enemy[str[1] - '1'][str[0] - 'A'] != 'x')
 #define HELP3 map_enemy[y][x] == 'x' ? x_enemy + 1 : x_enemy;
 #define HELP4 write(1, "\nwaiting for enemy's attack...\n", 31) : 0;
 #define HELP5 attack(my_getnbr(pid), map, map_enemy) : check;
